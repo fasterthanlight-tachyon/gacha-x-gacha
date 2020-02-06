@@ -1,5 +1,6 @@
 package com.github.crocharisma.gachaxgacha.config;
 
+import com.github.crocharisma.gachaxgacha.util.SiteMappings;
 import com.github.crocharisma.gachaxgacha.util.ViewNames;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -20,6 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName(ViewNames.HOME);
+        registry.addViewController(SiteMappings.HOME).setViewName(ViewNames.HOME);
+        registry.addViewController(SiteMappings.TEST).setViewName(ViewNames.TEST);
     }
 }

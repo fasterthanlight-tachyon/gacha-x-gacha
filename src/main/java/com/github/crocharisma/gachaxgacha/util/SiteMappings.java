@@ -8,6 +8,15 @@ package com.github.crocharisma.gachaxgacha.util;
  */
 public final class SiteMappings {
     /**
+     * The mapping for the home page
+     */
+    public static final String HOME = "/";
+    /**
+     * The mapping for the test page
+     */
+    public static final String TEST = "/test";
+
+    /**
      * No creation for you!
      */
     private SiteMappings() {
