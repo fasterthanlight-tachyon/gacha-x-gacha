@@ -26,8 +26,8 @@ canvas.addEventListener("click", function(){
     alert("ouch");
 });
 canvas.addEventListener("mousemove", function(e){
-    cursor.x = e.x;
-    cursor.y = e.y;
+    cursor.x = e.x - canvas.offsetLeft;
+    cursor.y = e.y - canvas.offsetTop + 1;
     console.log( cursor.x + " " + cursor.y );
 })
 canvas.addEventListener("load", function(){
