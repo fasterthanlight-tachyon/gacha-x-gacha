@@ -9,10 +9,27 @@ var height = 600;
 canvas.width = width;
 canvas.height = height;
 
-ctx.fillStyle = "45F9C3";
+var cursor = {
+    x:0,
+    y:0
+}
+
+ctx.fillStyle = "#45F9C3";
 ctx.beginPath();
 ctx.fillRect( 0, 0, width, height );
+
+function update(){
+    //TODO lol
+}
 
 document.getElementById("canvas").addEventListener("click", function(){
     alert("ouch");
 });
+document.getElementById("canvas").addEventListener("mousemove", function(e){
+    cursor.x = e.x;
+    cursor.y = e.y;
+    console.log( cursor.x + " " + cursor.y );
+})
+document.getElementById("canvas").addEventListener("load", function(){
+    update();
+})
