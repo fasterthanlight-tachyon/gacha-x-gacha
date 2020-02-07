@@ -13,6 +13,6 @@ ctx.fillStyle = "45F9C3";
 ctx.beginPath();
 ctx.fillRect( 0, 0, width, height );
 
-document.getElementById("canvas").addEventListener("click", function(){
+canvas.addEventListener("click", function(){
     alert("ouch");
 });
