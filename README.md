@@ -6,7 +6,7 @@ A (gacha) meme project
  - Java 11 (at least), and
  - Maven (optional; it needs to support your version of Java)
 
-Once you have Java 11 installed, make sure your `JAVA_HOME` envirnoment variable points to your installation of Java 11.
+Once you have Java 11 installed, make sure your `JAVA_HOME` system envirnoment variable points to your installation of Java 11.
 
 ### Instructions
 Go to command prompt or some other equivalent terminal (I personally like command prompt/PowerShell since it's easy to stop the application as needed) and navigate to the project folder.  
