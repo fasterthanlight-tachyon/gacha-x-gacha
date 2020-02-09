@@ -1,5 +1,6 @@
 # gacha-x-gacha
-A (gacha) meme project
+A (gacha) meme project by LeftistTachyon, CroCharisma, PIANO4DAYZ, and michelleli0421!  
+~~(Please don't judge us, we were bored.)~~  
 
 ## Running the application
 ### Prerequisites:
