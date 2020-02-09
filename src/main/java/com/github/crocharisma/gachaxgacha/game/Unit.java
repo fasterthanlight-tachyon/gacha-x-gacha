@@ -79,4 +79,12 @@ public class Unit {
     public boolean isDead() {
         return hp == 0;
     }
+
+    /**
+     * Resets this {@link Unit} for the beginning of battle.
+     */
+    public void reset() {
+        hp = maxHP; // Not sure if should reset HP to make game have _persistent_ HP rules
+        if (ultimateAttack != null) ultimateAttack.reset();
+    }
 }

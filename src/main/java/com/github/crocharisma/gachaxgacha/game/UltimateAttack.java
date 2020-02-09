@@ -52,4 +52,11 @@ public class UltimateAttack extends BasicAttack {
         charge += amount;
         if (charge > maxCharge) charge = maxCharge;
     }
+
+    /**
+     * Resets this {@link UltimateAttack} to default.
+     */
+    public void reset() {
+        charge = 0;
+    }
 }

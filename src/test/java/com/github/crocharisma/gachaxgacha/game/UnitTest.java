@@ -96,5 +96,11 @@ class UnitTest {
         assertEquals(0, you.getHp());
         assertEquals(0, ultimate.getCharge());
         assertTrue(you.isDead());
+
+        attacks[1].attack(sans, you);
+        assertNotEquals(0, ultimate.getCharge());
+
+        sans.reset();
+        assertEquals(0, ultimate.getCharge());
     }
 }
