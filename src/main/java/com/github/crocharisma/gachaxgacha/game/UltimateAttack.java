@@ -2,6 +2,12 @@ package com.github.crocharisma.gachaxgacha.game;
 
 import lombok.Getter;
 
+/**
+ * A class that models an ultimate attack.
+ *
+ * @author Jed Wang
+ * @since 1.0.0
+ */
 @Getter
 public class UltimateAttack extends BasicAttack {
     /**

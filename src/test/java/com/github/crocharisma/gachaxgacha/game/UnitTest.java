@@ -11,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 1.0.0
  */
 class UnitTest {
-
+    /**
+     * A tester method that ensures that setting name and description work
+     */
     @Test
     void getDescriptionAndName() {
         Unit u = new Unit("name", "description", null, null, null, 0);
@@ -23,6 +25,9 @@ class UnitTest {
         assertNull(u.getDescription());
     }
 
+    /**
+     * A tester method that ensures that storing attacks is correct
+     */
     @Test
     void getAttacks() {
         Attack one = new BasicAttack("name", 1, Type.POISON),
@@ -47,6 +52,9 @@ class UnitTest {
         assertEquals(four, u.getUltimateAttack());
     }
 
+    /**
+     * A tester method that ensures that attack interactions are functional
+     */
     @Test
     void attackInteractions() {
         Attack[] attacks = new Attack[]{new BasicAttack("Sins", 10, Type.NORMAL), new ChargingAttack("Rest", 50),
