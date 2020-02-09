@@ -1,6 +1,5 @@
 package com.github.crocharisma.gachaxgacha.game;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
@@ -10,8 +9,7 @@ import lombok.Getter;
  * @since 1.0.0
  */
 @Getter
-@EqualsAndHashCode(of = {"name", "type"})
-public class Attack {
+public abstract class Attack {
     /**
      * The name of this attack
      */
@@ -39,39 +37,10 @@ public class Attack {
     }
 
     /**
-     * An enum that stores the type of attack.
+     * Performs the attack on the defender.
+     *
+     * @param attacker the {@link Unit} attacking
+     * @param defender the {@link Unit} recieving the attack
      */
-    @Getter
-    public enum Type {
-        /**
-         * A fire attack?
-         */
-        FIRE("FIRE"),
-        /**
-         * An earthen attack?
-         */
-        EARTH("EARTH"),
-        /**
-         * A water attack?
-         */
-        WATER("WATER"),
-        /**
-         * An air attack?
-         */
-        AIR("AIR");
-
-        /**
-         * The type of attack
-         */
-        private final String type;
-
-        /**
-         * Creates a {@link Type} instance
-         *
-         * @param type the type of attack this enum should represent
-         */
-        Type(String type) {
-            this.type = type;
-        }
-    }
+    public abstract void attack(Unit attacker, Unit defender);
 }

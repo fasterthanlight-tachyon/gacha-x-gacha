@@ -1,9 +1,6 @@
 package com.github.crocharisma.gachaxgacha.game;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-
-import java.util.Arrays;
 
 /**
  * A class that represents a unit in the game.
@@ -25,49 +22,61 @@ public class Unit {
      * The attacks that this unit knows.<br>
      * The final attack is always the last in the array.
      */
-    @Getter(AccessLevel.NONE)
     private final Attack[] attacks;
+    /**
+     * This {@link Unit}'s ultimate attack!
+     */
+    private final UltimateAttack ultimateAttack;
+    /**
+     * The type of this {@link Unit}
+     */
+    private final Type type;
+    /**
+     * The maximum health points this unit can have
+     */
+    private final int maxHP;
+    /**
+     * The health points this unit has
+     */
+    private int hp;
 
     /**
      * Creates a {@link Unit}.
      *
-     * @param name        the name to give this {@link Unit}
-     * @param description the description to give this {@link Unit}
-     * @param attacks     the {@link Attack}s to give this {@link Unit}
+     * @param name           the name to give this {@link Unit}
+     * @param description    the description to give this {@link Unit}
+     * @param attacks        the {@link Attack}s to give this {@link Unit}
+     * @param ultimateAttack this {@link Unit}'s ultimate attack
+     * @param type           the {@link Type} of this {@link Unit}
+     * @param maxHP          the maximum health points this unit can have
      */
-    public Unit(String name, String description, Attack[] attacks) {
+    public Unit(String name, String description, Attack[] attacks, UltimateAttack ultimateAttack, Type type, int maxHP) {
         this.name = name;
         this.description = description;
         this.attacks = attacks;
+        this.ultimateAttack = ultimateAttack;
+        this.type = type;
+        this.maxHP = maxHP;
+
+        hp = maxHP;
     }
 
     /**
-     * Returns an array of standard {@link Attack}s that this {@link Unit} knows.<br>
-     * If the array containing all the attacks is {@code null}, then {@code null} is returned.
+     * Damages this {@link Unit} by the given amount
      *
-     * @return an array of standard {@link Attack}s that this {@link Unit} knows
+     * @param amount the amount to damage this {@link Unit}
      */
-    public Attack[] getAttacks() {
-        return attacks == null ? null : Arrays.copyOfRange(attacks, 0, attacks.length - 1);
+    public void damage(int amount) {
+        hp -= amount;
+        if (hp < 0) hp = 0;
     }
 
     /**
-     * Returns the ultimate attack!<br>
-     * If the array containing the attacks is {@code null}, then {@code null} is returned.
+     * Returns whether this {@link Unit} is dead
      *
-     * @return the ultimate attack!
+     * @return whether this {@link Unit} is dead
      */
-    public Attack getUltimateAttack() {
-        return attacks == null ? null : attacks[attacks.length - 1];
-    }
-
-    /**
-     * Returns an array that contains all attacks that this {@link Unit} knows, including the standard and ultimate attacks.
-     * If the array containing the attacks is {@code null}, then {@code null} is returned.
-     *
-     * @return an array that contains all attacks that this {@link Unit} knows
-     */
-    public Attack[] getAllAttacks() {
-        return attacks;
+    public boolean isDead() {
+        return hp == 0;
     }
 }
