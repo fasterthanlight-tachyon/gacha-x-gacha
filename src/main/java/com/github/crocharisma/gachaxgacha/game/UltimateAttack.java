@@ -32,9 +32,9 @@ public class UltimateAttack extends BasicAttack {
     public void attack(Unit attacker, Unit defender) {
         if (charge == maxCharge) {
             super.attack(attacker, defender);
-
-            charge = 0;
         }
+
+        charge = 0;
     }
 
     /**
@@ -44,6 +44,6 @@ public class UltimateAttack extends BasicAttack {
      */
     public void charge(int amount) {
         charge += amount;
-        if(charge > maxCharge) charge = maxCharge;
+        if (charge > maxCharge) charge = maxCharge;
     }
 }
