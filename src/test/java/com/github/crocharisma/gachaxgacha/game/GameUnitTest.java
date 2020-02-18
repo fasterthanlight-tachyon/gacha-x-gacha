@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Jed Wang
  * @since 1.0.0
  */
-class UnitTest {
+class GameUnitTest {
     /**
      * A tester method that ensures that setting name and description work
      */
