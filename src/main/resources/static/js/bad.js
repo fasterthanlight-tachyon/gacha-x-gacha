@@ -19,7 +19,6 @@ var cursor = {
 };
 
 ctx.fillStyle = "#45F9C3";
-ctx.beginPath();
 ctx.fillRect( 0, 0, width, height );
 var start = {
     x : width / 2 - 200,
@@ -49,13 +48,14 @@ function update(){
 }
 
 canvas.addEventListener("click", function(){
-    alert("ouch");
+
+});
+window.addEventListener("load", function(){
+    console.log( 'death grips is online');
+    update();
 });
 canvas.addEventListener("mousemove", function(e){
     cursor.x = e.x - canvas.offsetLeft;
     cursor.y = e.y - canvas.offsetTop + 1;
     console.log( cursor.x + " " + cursor.y );
-});
-window.addEventListener("load", function(){
-    update();
 });
