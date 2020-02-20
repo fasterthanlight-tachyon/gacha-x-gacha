@@ -1,10 +1,11 @@
 (function() {
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;
-})();
+})(); // dog balls lmao
 document.getElementById("yeet").addEventListener("click", function() {
     alert("javascript is best girl");
 });
+
 //dont look at me like that
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");

@@ -8,11 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class GachaXGachaApplication {
-	/**
-	 * The main method
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(GachaXGachaApplication.class, args);
-	}
+    /**
+     * The main method
+     *
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(GachaXGachaApplication.class, args);
+    }
 }
