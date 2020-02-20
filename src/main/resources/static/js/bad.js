@@ -10,14 +10,14 @@ var width = 800;
 var height = 600;
 canvas.width = width;
 canvas.height = height;
-var click = false;
 var op = true;
 var gamer = false;
 var cursor = {
     x: 0,
     y: 0,
     width : 10,
-    height : 10
+    height : 10,
+    click : false
 };
 
 ctx.fillStyle = "#45F9C3";
@@ -39,7 +39,7 @@ function update(){
         ctx.fillStyle = '#CCFFCC';
         ctx.fillRect( start.x, start.y, start.width, start.height );
         //dont look at me
-        if(click && tag( cursor, start )){
+        if(cursor.click && tag(start, cursor )){
             alert( 'it has begun' );
             op = false;
             gamer = true;
@@ -59,11 +59,11 @@ function update(){
     requestAnimationFrame(update);
 }
 
-canvas.addEventListener("click", function(){
-    click = true;
+window.addEventListener("click", function(){
+    cursor.click = true;
     window.setTimeout( function(){
-        click = false;
-    }, 60 );
+        cursor.click = false;
+    }, 10 );
     console.log( 'update' );
 });
 window.addEventListener("load", function(){
