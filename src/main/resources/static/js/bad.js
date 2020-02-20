@@ -2,9 +2,6 @@
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;
 })(); // dog balls lmao
-document.getElementById("yeet").addEventListener("click", function() {
-    alert("javascript is best girl");
-});
 
 //dont look at me like that
 var canvas = document.getElementById("canvas");
@@ -13,10 +10,14 @@ var width = 800;
 var height = 600;
 canvas.width = width;
 canvas.height = height;
-
+var click = false;
+var op = true;
+var gamer = false;
 var cursor = {
     x: 0,
-    y: 0
+    y: 0,
+    width : 10,
+    height : 10
 };
 
 ctx.fillStyle = "#45F9C3";
@@ -27,7 +28,7 @@ var start = {
     width : 400,
     height : 50
 }
-
+console.log( 'test' );
 function update(){
     console.log( 'ran' );
     function game(){
@@ -35,21 +36,35 @@ function update(){
     }
 
     function title(){
-        ctx.fillStyle = '#FFFF33';
+        ctx.fillStyle = '#CCFFCC';
         ctx.fillRect( start.x, start.y, start.width, start.height );
         //dont look at me
+        if(click && tag( cursor, start )){
+            alert( 'it has begun' );
+            op = false;
+            gamer = true;
+        }
     }
 
     function win(){
         console.log( 'fword' );
     }
 
-    title();
+    if( op ){
+        title();
+    }
+    if( gamer ){
+        game();
+    }
     requestAnimationFrame(update);
 }
 
 canvas.addEventListener("click", function(){
-
+    click = true;
+    window.setTimeout( function(){
+        click = false;
+    }, 60 );
+    console.log( 'update' );
 });
 window.addEventListener("load", function(){
     console.log( 'death grips is online');
@@ -60,3 +75,19 @@ canvas.addEventListener("mousemove", function(e){
     cursor.y = e.y - canvas.offsetTop + 1;
     console.log( cursor.x + " " + cursor.y );
 });
+
+function tag( one, two){
+
+    var vx = (one.x + (one.width/2) ) - (two.x + (two.width/2) );
+    var vy = one.y + (one.height/2) - two.y - two.width/2;
+
+    var hwidths = one.width/2 + two.width/2;
+    var hheights = one.height/2 + two.height/2;
+
+    if( Math.abs(vx) < hwidths && Math.abs(vy) < hheights ){
+        return true;
+    }
+
+    return false;
+
+}
