@@ -29,31 +29,31 @@ var start = {
     height : 50
 }
 console.log( 'test' );
-function update(){
+function update() {
     console.log( 'ran' );
-    function game(){
+    function game() {
 
     }
 
-    function title(){
+    function title() {
         ctx.fillStyle = '#CCFFCC';
         ctx.fillRect( start.x, start.y, start.width, start.height );
         //dont look at me
-        if(cursor.click && tag(start, cursor )){
+        if(cursor.click && tag(start, cursor)) {
             alert( 'it has begun' );
             op = false;
             gamer = true;
         }
     }
 
-    function win(){
+    function win() {
         console.log( 'fword' );
     }
 
-    if( op ){
+    if (op) {
         title();
     }
-    if( gamer ){
+    if (gamer) {
         game();
     }
     requestAnimationFrame(update);
@@ -66,28 +66,24 @@ window.addEventListener("click", function(){
     }, 10 );
     console.log( 'update' );
 });
+
 window.addEventListener("load", function(){
     console.log( 'death grips is online');
     update();
 });
+
 canvas.addEventListener("mousemove", function(e){
     cursor.x = e.x - canvas.offsetLeft;
     cursor.y = e.y - canvas.offsetTop + 1;
     console.log( cursor.x + " " + cursor.y );
 });
 
-function tag( one, two){
-
+function tag(one, two){
     var vx = (one.x + (one.width/2) ) - (two.x + (two.width/2) );
     var vy = one.y + (one.height/2) - two.y - two.width/2;
 
     var hwidths = one.width/2 + two.width/2;
     var hheights = one.height/2 + two.height/2;
 
-    if( Math.abs(vx) < hwidths && Math.abs(vy) < hheights ){
-        return true;
-    }
-
-    return false;
-
+    return Math.abs(vx) < hwidths && Math.abs(vy) < hheights;
 }
