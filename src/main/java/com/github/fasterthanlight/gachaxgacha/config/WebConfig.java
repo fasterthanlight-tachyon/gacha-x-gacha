@@ -1,7 +1,7 @@
-package com.github.crocharisma.gachaxgacha.config;
+package com.github.fasterthanlight.gachaxgacha.config;
 
-import com.github.crocharisma.gachaxgacha.util.SiteMappings;
-import com.github.crocharisma.gachaxgacha.util.ViewNames;
+import com.github.fasterthanlight.gachaxgacha.util.SiteMappings;
+import com.github.fasterthanlight.gachaxgacha.util.ViewNames;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

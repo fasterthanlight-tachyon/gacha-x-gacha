@@ -1,4 +1,4 @@
-package com.github.crocharisma.gachaxgacha.game;
+package com.github.fasterthanlight.gachaxgacha.game;
 
 import org.junit.jupiter.api.Test;
 
