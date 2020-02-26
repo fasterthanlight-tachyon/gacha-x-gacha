@@ -30,10 +30,10 @@ class GameUnitTest {
      */
     @Test
     void getAttacks() {
-        Attack one = new BasicAttack("name", 1, Type.POISON),
-                two = new BasicAttack("no-name", 2, Type.ICE),
-                three = new BasicAttack("yeet", 3, Type.NORMAL);
-        UltimateAttack four = new UltimateAttack("sans", 20000, Type.GHOST, 200);
+        Attack one = new BasicAttack("name", 1, Type.CONJURER),
+                two = new BasicAttack("no-name", 2, Type.CONJURER),
+                three = new BasicAttack("yeet", 3, Type.CONJURER);
+        UltimateAttack four = new UltimateAttack("sans", 20000, Type.CONJURER, 200);
         Attack[] attacks = new Attack[]{one, two, three};
         Unit u = new Unit(null, null, attacks, four, null, 0);
 
@@ -57,11 +57,11 @@ class GameUnitTest {
      */
     @Test
     void attackInteractions() {
-        Attack[] attacks = new Attack[]{new BasicAttack("Sins", 10, Type.NORMAL), new ChargingAttack("Rest", 50),
-                new BasicAttack("Yeet", 25, Type.DARK)};
-        UltimateAttack ultimate = new UltimateAttack("The Final Attack", 10_000, Type.GHOST, 100);
-        Unit sans = new Unit("Sans", "An absolute madlad", attacks, ultimate, Type.FIGHTING, 1),
-                you = new Unit("You", "Idiot", null, null, Type.FAIRY, 51);
+        Attack[] attacks = new Attack[]{new BasicAttack("Sins", 10, Type.CONJURER), new ChargingAttack("Rest", 50),
+                new BasicAttack("Yeet", 25, Type.EMITTER)};
+        UltimateAttack ultimate = new UltimateAttack("The Final Attack", 10_000, Type.SPECIALIST, 100);
+        Unit sans = new Unit("Sans", "An absolute madlad", attacks, ultimate, Type.TRANSMITTER, 1),
+                you = new Unit("You", "Idiot", null, null, Type.SPECIALIST, 51);
 
         assertEquals(0, sans.getUltimateAttack().getCharge());
         assertEquals(1, sans.getHp());
@@ -69,26 +69,26 @@ class GameUnitTest {
 
         attacks[0].attack(sans, you);
         assertEquals(1, sans.getHp());
-        assertEquals(41, you.getHp());
+        assertEquals(43, you.getHp());
 
         attacks[2].attack(sans, you);
         assertEquals(1, sans.getHp());
-        assertEquals(29, you.getHp());
+        assertEquals(43, you.getHp());
         assertEquals(0, ultimate.getCharge());
 
         ultimate.attack(sans, you);
         assertEquals(1, sans.getHp());
-        assertEquals(29, you.getHp());
+        assertEquals(43, you.getHp());
         assertFalse(you.isDead());
 
         attacks[1].attack(sans, you);
         assertEquals(1, sans.getHp());
-        assertEquals(29, you.getHp());
+        assertEquals(43, you.getHp());
         assertEquals(50, ultimate.getCharge());
 
         attacks[1].attack(sans, you);
         assertEquals(1, sans.getHp());
-        assertEquals(29, you.getHp());
+        assertEquals(43, you.getHp());
         assertEquals(100, ultimate.getCharge());
 
         ultimate.attack(sans, you);
