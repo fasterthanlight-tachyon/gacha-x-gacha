@@ -4,34 +4,36 @@ import lombok.Getter;
 
 /**
  * An enum that stores the type of attack.
+ *
+ * @author Jed Wang
+ * @since 1.0.0
  */
 @Getter
 public enum Type {
-    NORMAL(0), FIRE(1), WATER(2), ELECTRIC(3), GRASS(4), ICE(5), FIGHTING(6), POISON(7), GROUND(8), FLYING(9),
-    PSYCHIC(10), BUG(11), ROCK(12), GHOST(13), DRAGON(14), DARK(15), STEEL(16), FAIRY(17);
+    ENHANCER(0), TRANSMITTER(1), CONJURER(2), EMITTER(3), MANIPULATOR(4), SPECIALIST(5);
 
     /**
-     * The matrix of multipliers.
+     * The matrix of attack multipliers based on unit type and attack type.
      */
-    private static final double[][] MULTIPLIER_MATRIX = {
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1, 1, 0.5, 1},
-            {0, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2, 1},
-            {0, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5, 1, 1, 1},
-            {1, 1, 2, 0.5, 0.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 0.5, 1, 1, 1},
-            {1, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 0.5, 1, 0.5, 1},
-            {1, 0.5, 0.5, 1, 2, 0.5, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 0.5, 1},
-            {2, 1, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 0.5, 0.5, 2, 0, 1, 2, 2, 0.5},
-            {1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 1, 1, 0, 2},
-            {1, 2, 1, 2, 0.5, 1, 1, 2, 1, 0, 1, 0.5, 2, 1, 1, 1, 2, 1},
-            {1, 1, 1, 0.5, 2, 1, 2, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 0.5, 1},
-            {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0.5, 1, 1, 1, 1, 0, 0.5, 1},
-            {1, 0.5, 1, 1, 2, 1, 0.5, 0.5, 1, 0.5, 2, 1, 1, 0.5, 1, 2, 0.5, 0.5},
-            {1, 2, 1, 1, 1, 2, 0.5, 1, 0.5, 2, 1, 2, 1, 1, 1, 1, 0.5, 1},
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 0.5, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 0.5, 0},
-            {1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 2, 1, 0.5, 1, 0.5},
-            {1, 0.5, 0.5, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0.5, 2},
-            {1, 0.5, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 1, 1, 1, 2, 2, 0.5, 1}
+    private static final double[][] ATTACK_MULTIPLIER_MATRIX = {
+            {1.0, 0.8, 0.6, 0.0, 0.6, 0.8},
+            {0.8, 1.0, 0.8, 0.0, 0.4, 0.6},
+            {0.6, 0.8, 1.0, 0.01, 0.6, 0.4},
+            {0.8, 0.6, 0.4, 0.0, 0.8, 1.0},
+            {0.6, 0.4, 0.6, 0.01, 1.0, 0.8},
+            {0.4, 0.6, 0.8, 1.0, 0.8, 0.6}
+    };
+
+    /**
+     * The matrix of attack multipliers based on attack type and defense type.
+     */
+    private static final double[][] STRENGTH_MATRIX = {
+            {1.0, 2.0, 1.0, 0.5, 1.0, 1.0, 1.5},
+            {0.5, 1.0, 2.0, 1.0, 1.0, 1.0, 1.5},
+            {1.0, 0.5, 1.0, 1.0, 2.0, 1.0, 1.5},
+            {2.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.5},
+            {1.0, 1.0, 0.5, 2.0, 1.0, 1.0, 1.5},
+            {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}
     };
 
     /**
@@ -51,12 +53,13 @@ public enum Type {
     /**
      * Returns the attack multiplier given the attack type and defense type.
      *
-     * @param att the {@link Type} of the attack
-     * @param def the {@link Type} of the defender
+     * @param attacker the {@link Type} of the unit attacking
+     * @param attType  the {@link Type} of the attack
+     * @param def      the {@link Type} of the defender
      * @return the attack multiplier
      */
-    public static double getAttackMultiplier(Type att, Type def) {
-        return MULTIPLIER_MATRIX[att.type][def.type];
+    public static double getAttackMultiplier(Type attacker, Type attType, Type def) {
+        return ATTACK_MULTIPLIER_MATRIX[attacker.type][attType.type] * STRENGTH_MATRIX[attType.type][def.type];
     }
 
     /**
@@ -66,7 +69,7 @@ public enum Type {
      * @return whether this is strong against that
      */
     public boolean isStrongAgainst(Type def) {
-        return getAttackMultiplier(this, def) > 1;
+        return STRENGTH_MATRIX[type][def.type] > 1;
     }
 
     /**
@@ -76,6 +79,6 @@ public enum Type {
      * @return whether this is weak against that
      */
     public boolean isWeakAgainst(Type def) {
-        return getAttackMultiplier(this, def) < 1;
+        return STRENGTH_MATRIX[type][def.type] < 1;
     }
 }

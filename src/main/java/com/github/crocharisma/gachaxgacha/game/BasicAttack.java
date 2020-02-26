@@ -20,7 +20,7 @@ public class BasicAttack extends Attack {
 
     @Override
     public void attack(Unit attacker, Unit defender) {
-        double mult = Type.getAttackMultiplier(getType(), defender.getType());
+        double mult = Type.getAttackMultiplier(attacker.getType(), getType(), defender.getType());
         defender.damage((int) (mult * getBaseDamage()));
     }
 }

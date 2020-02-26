@@ -35,7 +35,7 @@ public class ChargingAttack extends Attack {
      * @param chargingAmount the amount this {@link ChargingAttack} charges an {@link UltimateAttack}
      */
     public ChargingAttack(String name, int chargingAmount) {
-        this(name, 0, Type.NORMAL, chargingAmount);
+        this(name, 0, Type.SPECIALIST, chargingAmount);
     }
 
     @Override
