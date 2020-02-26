@@ -1,4 +1,4 @@
-package com.github.crocharisma.gachaxgacha;
+package com.github.fasterthanlight.gachaxgacha;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

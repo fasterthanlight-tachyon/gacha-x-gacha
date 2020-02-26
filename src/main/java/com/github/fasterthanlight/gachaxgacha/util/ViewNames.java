@@ -1,4 +1,4 @@
-package com.github.crocharisma.gachaxgacha.util;
+package com.github.fasterthanlight.gachaxgacha.util;
 
 /**
  * A class that stores all the view names in this application.

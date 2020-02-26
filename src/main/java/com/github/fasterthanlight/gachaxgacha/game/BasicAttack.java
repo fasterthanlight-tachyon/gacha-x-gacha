@@ -1,4 +1,4 @@
-package com.github.crocharisma.gachaxgacha.game;
+package com.github.fasterthanlight.gachaxgacha.game;
 
 /**
  * A class that models a basic attack.
