@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <thlogic>
     <attr sel="#test-link"
-          th:href="@{__${T(com.github.crocharisma.gachaxgacha.util.SiteMappings).TEST}__}"></attr>
+          th:href="@{__${T(com.github.fasterthanlight.gachaxgacha.util.SiteMappings).TEST}__}"></attr>
 </thlogic>
